@@ -1,779 +1,723 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Krish Nadda | Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Krish Nadda | Biotech Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
-  :root {
-    --bg: #050810;
-    --bg2: #090d1a;
-    --bg3: #0d1225;
-    --accent: #3b82f6;
-    --accent2: #60a5fa;
-    --accent3: #1d4ed8;
-    --text: #e2e8f0;
-    --muted: #64748b;
-    --border: rgba(59,130,246,0.18);
-    --glow: 0 0 32px rgba(59,130,246,0.18);
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+
+  /* ===== LIGHT THEME (Biotech Professional) ===== */
+  :root {
+    --bg-primary: #f8fafc;
+    --bg-secondary: #ffffff;
+    --bg-card: #ffffff;
+    --bg-elevated: #f1f5f9;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #475569;
+    --accent: #2b7e3a;
+    --accent-light: #4caf50;
+    --accent-soft: #e8f5e9;
+    --accent-glow: rgba(43, 126, 58, 0.08);
+    --border: #e2e8f0;
+    --border-focus: #cbd5e1;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03);
+    --shadow-lg: 0 12px 30px rgba(0,0,0,0.08);
+    --transition: all 0.25s ease;
+  }
+
+  /* ===== DARK MODE ===== */
+  body.dark {
+    --bg-primary: #0a0f1a;
+    --bg-secondary: #111827;
+    --bg-card: #1e293b;
+    --bg-elevated: #0f172a;
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --accent: #4caf50;
+    --accent-light: #66bb6a;
+    --accent-soft: #1e2a1e;
+    --accent-glow: rgba(76, 175, 80, 0.15);
+    --border: #1e293b;
+    --border-focus: #334155;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+    --shadow-lg: 0 12px 30px rgba(0,0,0,0.5);
+  }
+
   body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Mono', monospace;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
+    transition: background 0.3s ease, color 0.2s ease;
     overflow-x: hidden;
   }
 
-  /* ── CANVAS BG ── */
-  #bg-canvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.55; }
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    width: 100%;
+  }
 
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.1rem 3rem;
-    background: rgba(5,8,16,0.82);
-    backdrop-filter: blur(18px);
+  /* ===== MOBILE-FIRST NAVIGATION ===== */
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg-secondary);
+    backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
+    padding: 0.8rem 0;
+    transition: var(--transition);
   }
-  .nav-logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800; font-size: 1.3rem;
-    color: var(--accent2);
-    letter-spacing: 0.04em;
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
-  .nav-logo span { color: var(--text); }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    color: var(--muted); text-decoration: none;
-    font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
-    transition: color 0.2s;
+  .logo {
+    font-family: 'Space Grotesk', monospace;
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: -0.3px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    white-space: nowrap;
   }
-  .nav-links a:hover { color: var(--accent2); }
-
-  /* ── SECTIONS ── */
-  section { position: relative; z-index: 1; }
-
-  /* ── HERO with photo ── */
-  #hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column;
+  /* mobile-friendly nav links */
+  .nav-links {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    flex-wrap: wrap;
     justify-content: center;
-    padding: 6rem 3rem 4rem 8vw;
-    position: relative;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.75rem;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+  .nav-links a:hover {
+    color: var(--accent);
+  }
+  .theme-toggle {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    padding: 0.4rem 0.8rem;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--text-secondary);
+    transition: var(--transition);
+  }
+
+  /* buttons & shared */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.7rem 1.4rem;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: var(--transition);
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+    box-shadow: var(--shadow-sm);
+  }
+  .btn-primary:hover {
+    background: var(--accent-light);
+    transform: translateY(-2px);
+  }
+  .btn-outline {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+  }
+  .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ===== HERO (fully responsive) ===== */
+  .hero {
+    padding: 3rem 0 3rem;
   }
   .hero-grid {
     display: flex;
     align-items: center;
-    gap: 3rem;
+    gap: 2rem;
     flex-wrap: wrap;
+    flex-direction: row;
   }
   .hero-content {
-    flex: 2;
-    min-width: 260px;
+    flex: 1.5;
+    min-width: 200px;
+  }
+  .hero-badge {
+    background: var(--accent-soft);
+    color: var(--accent);
+    display: inline-block;
+    padding: 0.25rem 1rem;
+    border-radius: 30px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .hero-name {
+    font-size: clamp(2rem, 7vw, 3.8rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    letter-spacing: -1px;
+  }
+  .hero-name .highlight {
+    color: var(--accent);
+  }
+  .hero-desc {
+    color: var(--text-muted);
+    max-width: 520px;
+    margin-bottom: 1.8rem;
+    font-size: 0.95rem;
   }
   .hero-photo {
     flex: 1;
-    min-width: 180px;
     display: flex;
     justify-content: center;
   }
   .hero-photo img {
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
     object-fit: cover;
     border-radius: 50%;
-    border: 2px solid var(--border);
-    box-shadow: var(--glow);
-    transition: transform 0.3s ease, box-shadow 0.3s;
-    background: var(--bg3);
+    border: 3px solid var(--accent);
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s;
   }
-  .hero-photo img:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 38px rgba(59,130,246,0.3);
+  @media (min-width: 640px) {
+    .hero-photo img { width: 250px; height: 250px; }
   }
-  .hero-tag {
-    font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 1.4rem;
-    border: 1px solid var(--border); padding: 0.35rem 0.9rem;
-    border-radius: 2px;
-    animation: fadeUp 0.7s ease both;
-    display: inline-block;
-  }
-  .hero-name {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(3rem, 8vw, 6.5rem);
-    font-weight: 800; line-height: 1;
-    color: #fff;
-    animation: fadeUp 0.8s 0.1s ease both;
-  }
-  .hero-name .blue { color: var(--accent2); }
-  .hero-sub {
-    margin-top: 1.2rem; font-size: 1.05rem;
-    color: var(--muted); max-width: 520px; line-height: 1.7;
-    animation: fadeUp 0.8s 0.2s ease both;
-  }
-  .hero-btns {
-    margin-top: 2.4rem; display: flex; gap: 1rem; flex-wrap: wrap;
-    animation: fadeUp 0.8s 0.3s ease both;
-  }
-  .btn {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    padding: 0.75rem 1.8rem;
-    font-family: 'DM Mono', monospace; font-size: 0.82rem;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    border-radius: 3px; text-decoration: none; transition: all 0.2s;
-    cursor: pointer; border: none;
-  }
-  .btn-primary {
-    background: var(--accent); color: #fff;
-  }
-  .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: var(--glow); }
-  .btn-outline {
-    background: transparent; color: var(--accent2);
-    border: 1px solid var(--border);
-  }
-  .btn-outline:hover { background: rgba(59,130,246,0.08); transform: translateY(-2px); }
-
-  .hero-scroll {
-    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
-    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
-    color: var(--muted); font-size: 0.7rem; letter-spacing: 0.15em;
-    animation: bounce 2s infinite;
-  }
-  .hero-scroll .line {
-    width: 1px; height: 40px;
-    background: linear-gradient(to bottom, var(--accent), transparent);
+  @media (min-width: 1024px) {
+    .hero-photo img { width: 280px; height: 280px; }
   }
 
-  /* ── SECTION HEADER ── */
-  .sec-header {
-    display: flex; align-items: center; gap: 1rem;
-    margin-bottom: 3rem;
+  /* section headers */
+  .section-header {
+    margin-bottom: 2rem;
   }
-  .sec-num {
-    font-size: 0.7rem; letter-spacing: 0.2em;
-    color: var(--accent); font-family: 'DM Mono', monospace;
+  .section-sub {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
   }
-  .sec-title {
-    font-family: 'Syne', sans-serif; font-weight: 800;
-    font-size: clamp(1.6rem, 3vw, 2.4rem); color: #fff;
+  .section-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.3px;
   }
-  .sec-line {
-    flex: 1; height: 1px;
-    background: linear-gradient(to right, var(--border), transparent);
+  @media (min-width: 768px) {
+    .section-title { font-size: 1.9rem; }
   }
 
-  /* ── ABOUT ── */
-  #about {
-    padding: 7rem 8vw;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
-    align-items: center;
+  /* about grid */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  @media (min-width: 768px) {
+    .about-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
   }
   .about-text p {
-    color: var(--muted); line-height: 1.9; font-size: 0.92rem;
+    color: var(--text-secondary);
     margin-bottom: 1rem;
+    line-height: 1.65;
+    font-size: 0.9rem;
   }
-  .about-text p strong { color: var(--accent2); font-weight: 500; }
-  .about-stats {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem;
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
   }
   .stat-card {
-    background: var(--bg3);
+    background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 1.4rem 1.2rem;
-    transition: border-color 0.2s, transform 0.2s;
+    border-radius: 20px;
+    padding: 1rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
   }
-  .stat-card:hover { border-color: var(--accent); transform: translateY(-3px); }
-  .stat-val {
-    font-family: 'Syne', sans-serif;
-    font-size: 2rem; font-weight: 800; color: var(--accent2);
+  .stat-number {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--accent);
   }
-  .stat-label { font-size: 0.72rem; color: var(--muted); margin-top: 0.3rem; letter-spacing: 0.08em; }
+  .stat-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+  }
 
-  /* ── SKILLS ── */
-  #skills { padding: 7rem 8vw; background: var(--bg2); }
+  /* skills responsive */
   .skills-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.2rem;
   }
-  .skill-group {
-    background: var(--bg3); border: 1px solid var(--border);
-    border-radius: 6px; padding: 1.6rem;
-    transition: border-color 0.2s, box-shadow 0.2s;
+  .skill-category {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 1.2rem;
   }
-  .skill-group:hover { border-color: var(--accent); box-shadow: var(--glow); }
-  .skill-group-title {
-    font-family: 'Syne', sans-serif; font-weight: 700;
-    color: var(--accent2); font-size: 0.9rem;
-    letter-spacing: 0.08em; margin-bottom: 1.1rem;
-    text-transform: uppercase;
+  .skill-title {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+    border-left: 3px solid var(--accent);
+    padding-left: 0.7rem;
   }
-  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
   .skill-tag {
-    font-size: 0.72rem; padding: 0.3rem 0.8rem;
-    border: 1px solid var(--border); border-radius: 2px;
-    color: var(--text); letter-spacing: 0.05em;
-    transition: all 0.2s;
-  }
-  .skill-tag:hover { border-color: var(--accent); color: var(--accent2); }
-  .skill-tag.pending {
-    opacity: 0.45; border-style: dashed;
-    font-style: italic;
+    background: var(--bg-elevated);
+    font-size: 0.7rem;
+    padding: 0.25rem 0.8rem;
+    border-radius: 40px;
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
   }
 
-  /* ── PROJECTS ── */
-  #projects { padding: 7rem 8vw; }
-  .proj-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;
+  /* project cards */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
-  .proj-card {
-    background: var(--bg3); border: 1px solid var(--border);
-    border-radius: 6px; padding: 2rem;
-    position: relative; overflow: hidden;
-    transition: border-color 0.2s, transform 0.2s;
+  @media (min-width: 640px) {
+    .projects-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
   }
-  .proj-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(to right, var(--accent), transparent);
-    opacity: 0; transition: opacity 0.2s;
+  .project-card {
+    background: var(--bg-card);
+    border-radius: 24px;
+    padding: 1.4rem;
+    border: 1px solid var(--border);
+    transition: var(--transition);
   }
-  .proj-card:hover { border-color: var(--accent); transform: translateY(-4px); }
-  .proj-card:hover::before { opacity: 1; }
-  .proj-num {
-    font-size: 0.65rem; color: var(--accent); letter-spacing: 0.15em; margin-bottom: 1rem;
-  }
-  .proj-title {
-    font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700;
-    color: #fff; margin-bottom: 0.7rem;
-  }
-  .proj-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.2rem; }
-  .proj-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-  .proj-tag {
-    font-size: 0.68rem; padding: 0.2rem 0.6rem;
-    background: rgba(59,130,246,0.1); color: var(--accent2);
-    border-radius: 2px; letter-spacing: 0.04em;
-  }
+  .project-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+  .project-title { font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .project-desc { color: var(--text-muted); font-size: 0.8rem; line-height: 1.5; margin-bottom: 1rem; }
 
-  /* ── EDUCATION ── */
-  #education { padding: 7rem 8vw; background: var(--bg2); }
-  .edu-timeline { position: relative; padding-left: 2rem; }
-  .edu-timeline::before {
-    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-    width: 1px; background: var(--border);
+  /* education timeline */
+  .edu-item {
+    background: var(--bg-card);
+    border-radius: 20px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
   }
-  .edu-item { position: relative; margin-bottom: 2.5rem; padding-left: 1.5rem; }
-  .edu-item::before {
-    content: ''; position: absolute; left: -2.35rem; top: 0.45rem;
-    width: 10px; height: 10px; border-radius: 50%;
-    background: var(--accent); box-shadow: 0 0 12px var(--accent);
+  @media (min-width: 640px) {
+    .edu-item { flex-direction: row; justify-content: space-between; align-items: center; }
   }
-  .edu-degree {
-    font-family: 'Syne', sans-serif; font-weight: 700;
-    font-size: 1.05rem; color: #fff;
-  }
-  .edu-school { color: var(--accent2); font-size: 0.85rem; margin: 0.3rem 0; }
-  .edu-year { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.1em; }
+  .edu-degree { font-weight: 700; font-size: 0.95rem; }
+  .edu-school { color: var(--accent); font-size: 0.8rem; }
   .edu-score {
-    display: inline-block; margin-top: 0.5rem;
-    font-size: 0.75rem; padding: 0.25rem 0.75rem;
-    background: rgba(59,130,246,0.1); color: var(--accent2);
-    border-radius: 2px;
+    background: var(--accent-glow);
+    padding: 0.2rem 0.7rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--accent);
+    display: inline-block;
   }
 
-  /* ── CERTIFICATIONS ── */
-  #certifications { padding: 7rem 8vw; }
+  /* certifications grid */
   .cert-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
   }
   .cert-card {
-    background: var(--bg3); border: 1px solid var(--border);
-    border-radius: 6px; overflow: hidden;
-    cursor: pointer; transition: border-color 0.2s, transform 0.2s;
-    position: relative;
+    background: var(--bg-card);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: var(--transition);
   }
-  .cert-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: var(--glow); }
-  .cert-img-wrap { position: relative; overflow: hidden; }
-  .cert-img-wrap img {
-    width: 100%; display: block;
-    transition: transform 0.4s;
-    aspect-ratio: 16/9; object-fit: cover;
+  .cert-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
   }
-  .cert-card:hover .cert-img-wrap img { transform: scale(1.04); }
-  .cert-overlay {
-    position: absolute; inset: 0;
-    background: rgba(5,8,16,0.55);
-    display: flex; align-items: center; justify-content: center;
-    opacity: 0; transition: opacity 0.3s;
-  }
-  .cert-card:hover .cert-overlay { opacity: 1; }
-  .cert-overlay span {
-    font-size: 0.72rem; letter-spacing: 0.15em; color: #fff;
-    text-transform: uppercase;
-  }
-  .cert-body { padding: 1.2rem; }
-  .cert-label {
-    font-family: 'Syne', sans-serif; font-size: 0.9rem;
-    font-weight: 700; color: #fff; line-height: 1.4;
-  }
-  .cert-issuer { font-size: 0.72rem; color: var(--accent); margin-top: 0.4rem; letter-spacing: 0.06em; }
+  .cert-info { padding: 0.9rem; }
+  .cert-name { font-weight: 600; font-size: 0.85rem; margin-bottom: 0.2rem; }
+  .cert-issuer { font-size: 0.65rem; color: var(--accent); }
 
-  /* ── LIGHTBOX ── */
-  #lightbox {
-    display: none; position: fixed; inset: 0; z-index: 999;
-    background: rgba(0,0,0,0.92);
-    align-items: center; justify-content: center;
-  }
-  #lightbox.active { display: flex; }
-  #lightbox img {
-    max-width: 90vw; max-height: 88vh;
-    border-radius: 6px; border: 1px solid var(--border);
-  }
-  #lightbox-close {
-    position: absolute; top: 1.5rem; right: 2rem;
-    font-size: 2rem; color: var(--muted); cursor: pointer; line-height: 1;
-  }
-  #lightbox-close:hover { color: #fff; }
-
-  /* ── CONTACT ── */
-  #contact { padding: 7rem 8vw; background: var(--bg2); }
+  /* contact */
   .contact-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
   }
-  .contact-intro { color: var(--muted); font-size: 0.9rem; line-height: 1.8; }
-  .contact-intro strong { color: var(--accent2); }
-  .contact-links { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+  @media (min-width: 768px) {
+    .contact-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .contact-card {
+    background: var(--bg-card);
+    border-radius: 28px;
+    padding: 1.6rem;
+    border: 1px solid var(--border);
+  }
   .contact-link {
-    display: flex; align-items: center; gap: 0.9rem;
-    padding: 1rem 1.2rem;
-    background: var(--bg3); border: 1px solid var(--border);
-    border-radius: 6px; text-decoration: none; color: var(--text);
-    transition: all 0.2s; font-size: 0.82rem;
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.7rem 0;
+    text-decoration: none;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border);
+    transition: var(--transition);
+    font-size: 0.85rem;
   }
-  .contact-link:hover { border-color: var(--accent); color: var(--accent2); transform: translateX(4px); }
-  .contact-link .icon { font-size: 1.1rem; flex-shrink: 0; }
-  .contact-form-note {
-    background: var(--bg3); border: 1px solid var(--border);
-    border-radius: 6px; padding: 2rem;
-  }
-  .contact-form-note h3 {
-    font-family: 'Syne', sans-serif; color: var(--accent2);
-    margin-bottom: 0.8rem; font-size: 1rem;
-  }
-  .contact-form-note p { color: var(--muted); font-size: 0.82rem; line-height: 1.7; }
 
-  /* ── FOOTER ── */
+  /* back to top */
+  .back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background: var(--accent);
+    color: white;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    box-shadow: var(--shadow-md);
+    z-index: 99;
+    border: none;
+  }
+  .back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
   footer {
-    padding: 2rem 8vw;
+    text-align: center;
+    padding: 2rem 1rem;
     border-top: 1px solid var(--border);
-    display: flex; justify-content: space-between; align-items: center;
-    color: var(--muted); font-size: 0.72rem; letter-spacing: 0.08em;
+    margin-top: 2.5rem;
+    color: var(--text-muted);
+    font-size: 0.7rem;
   }
 
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes bounce {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50%       { transform: translateX(-50%) translateY(8px); }
-  }
+  /* reveal animation */
   .reveal {
-    opacity: 0; transform: translateY(28px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
   }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { gap: 1rem; }
-    .nav-links a { font-size: 0.68rem; }
-    #hero { padding: 7rem 1.5rem 4rem; }
-    .hero-grid { gap: 1.5rem; justify-content: center; text-align: center; }
-    .hero-content { text-align: center; }
-    .hero-sub { margin-left: auto; margin-right: auto; }
-    .hero-btns { justify-content: center; }
-    .hero-photo img { width: 160px; height: 160px; }
-    #about { grid-template-columns: 1fr; gap: 2.5rem; padding: 5rem 1.5rem; }
-    #skills, #projects, #certifications, #contact, #education { padding: 5rem 1.5rem; }
-    .contact-grid { grid-template-columns: 1fr; }
+  /* small spacing */
+  section {
+    margin-bottom: 2rem;
+    scroll-margin-top: 80px;
+  }
+  @media (max-width: 480px) {
+    .container { padding: 0 1rem; }
+    .nav-inner { padding: 0 1rem; }
+    .btn { padding: 0.5rem 1rem; font-size: 0.75rem; }
+    .hero-btns { display: flex; gap: 0.8rem; flex-wrap: wrap; }
   }
 </style>
 </head>
 <body>
 
-<canvas id="bg-canvas"></canvas>
-
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">KN<span>.</span></div>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#certifications">Certs</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+<nav class="navbar">
+  <div class="nav-inner">
+    <div class="logo">Krish Nadda<span style="color:var(--accent);">.</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Edu</a></li>
+      <li><a href="#certs">Certs</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="darkmode-toggle" aria-label="Dark mode">
+      <i class="fas fa-moon"></i> <span>Dark</span>
+    </button>
+  </div>
 </nav>
 
-<!-- HERO with photo -->
-<section id="hero">
-  <div class="hero-grid">
-    <div class="hero-content">
-      <div class="hero-tag">// B.Tech Biotechnology · 1st Year · LPU</div>
-      <h1 class="hero-name">Krish<br/><span class="blue">Nadda</span></h1>
-      <p class="hero-sub">Biotech student at Lovely Professional University exploring the intersection of biology, data science, and technology — building skills one project at a time.</p>
-      <div class="hero-btns">
-        <a href="#contact" class="btn btn-primary">Get in Touch</a>
-        <a href="https://github.com/Krish-nadda" target="_blank" class="btn btn-outline">GitHub ↗</a>
+<main>
+  <div class="container">
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <span class="hero-badge"><i class="fas fa-dna"></i> B.Tech Biotechnology · LPU</span>
+          <h1 class="hero-name">Krish <span class="highlight">Nadda</span></h1>
+          <p class="hero-desc">Biotech undergrad merging biology with data science. Passionate about bioinformatics, research & computational solutions.</p>
+          <div class="hero-btns">
+            <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Connect</a>
+            <a href="https://github.com/Krish-nadda" target="_blank" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <img src="image/myimage.jpg" alt="Krish Nadda" onerror="this.src='https://placehold.co/400x400/e8f5e9/2b7e3a?text=KN'">
+        </div>
       </div>
-    </div>
-    <div class="hero-photo">
-      <img src="image/myimage.jpg" alt="Krish Nadda" onerror="this.src='https://placehold.co/400x400/0d1225/60a5fa?text=KN'">
-    </div>
-  </div>
-  <div class="hero-scroll">
-    <span>Scroll</span>
-    <div class="line"></div>
-  </div>
-</section>
+    </section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div>
-    <div class="sec-header">
-      <span class="sec-num">01.</span>
-      <h2 class="sec-title">About Me</h2>
-      <div class="sec-line"></div>
-    </div>
-    <div class="about-text reveal">
-      <p>Hi! I'm <strong>Krish Nadda</strong>, a first-year B.Tech Biotechnology student at <strong>Lovely Professional University</strong>, Punjab. I come from Ghumarwin, Himachal Pradesh, where I built a strong academic foundation — scoring <strong>94% in Class 10</strong> and <strong>87% in Class 12</strong>.</p>
-      <p>I'm passionate about harnessing <strong>data science and programming</strong> alongside biotechnology to solve real-world biological problems. I actively participate in hackathons and workshops to sharpen my technical edge.</p>
-      <p>Currently developing skills in Python, C, R, and exploring the world of DSA and web development through hands-on workshops like <strong>Code-A-Haunt 3.0</strong> at LPU.</p>
-    </div>
-  </div>
-  <div class="about-stats reveal">
-    <div class="stat-card">
-      <div class="stat-val">94%</div>
-      <div class="stat-label">Class 10th Score</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-val">87%</div>
-      <div class="stat-label">Class 12th Score</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-val">5+</div>
-      <div class="stat-label">Certifications Earned</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-val">1st</div>
-      <div class="stat-label">Year at LPU</div>
-    </div>
-  </div>
-</section>
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-header reveal">
+        <div class="section-sub">// Background</div>
+        <h2 class="section-title">About Me</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>I'm <strong>Krish Nadda</strong>, a first-year B.Tech Biotechnology student at <strong>Lovely Professional University</strong> from Ghumarwin, Himachal Pradesh. My academic record: <strong>94% in Class 10</strong> and <strong>87% in Class 12</strong>.</p>
+          <p>I'm actively building skills in <strong>Python, C, R, DSA</strong> and core biotech subjects. Participated in <strong>Code-A-Haunt 3.0 hackathon</strong> and multiple technical workshops to integrate computational thinking into life sciences.</p>
+          <p>🔬 My goal: use data-driven methods to solve biological challenges — from bioinformatics to sustainable biotech solutions.</p>
+        </div>
+        <div class="stats-grid reveal">
+          <div class="stat-card"><div class="stat-number">94%</div><div class="stat-label">Class 10 Score</div></div>
+          <div class="stat-card"><div class="stat-number">87%</div><div class="stat-label">Class 12 Score</div></div>
+          <div class="stat-card"><div class="stat-number">7+</div><div class="stat-label">Certifications</div></div>
+          <div class="stat-card"><div class="stat-number">2025</div><div class="stat-label">B.Tech Freshman</div></div>
+        </div>
+      </div>
+    </section>
 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="sec-header reveal">
-    <span class="sec-num">02.</span>
-    <h2 class="sec-title">Skills</h2>
-    <div class="sec-line"></div>
-  </div>
-  <div class="skills-grid">
-    <div class="skill-group reveal">
-      <div class="skill-group-title">Programming Languages</div>
-      <div class="skill-tags">
-        <span class="skill-tag">C</span>
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag pending">C++ (learning)</span>
-        <span class="skill-tag pending">Java (learning)</span>
+    <!-- SKILLS -->
+    <section id="skills" class="reveal">
+      <div class="section-header">
+        <div class="section-sub">// Technical Arsenal</div>
+        <h2 class="section-title">Core Competencies</h2>
       </div>
-    </div>
-    <div class="skill-group reveal">
-      <div class="skill-group-title">Data & Statistics</div>
-      <div class="skill-tags">
-        <span class="skill-tag">R — Statistics</span>
-        <span class="skill-tag pending">R — Visualization (learning)</span>
-        <span class="skill-tag">Data Science Fundamentals</span>
+      <div class="skills-grid">
+        <div class="skill-category"><div class="skill-title">Programming</div><div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">C</span><span class="skill-tag">R (Stats)</span><span class="skill-tag learning">C++ (learning)</span></div></div>
+        <div class="skill-category"><div class="skill-title">Data Science</div><div class="skill-tags"><span class="skill-tag">Statistical Analysis</span><span class="skill-tag">Data Viz</span><span class="skill-tag">Pandas Basics</span></div></div>
+        <div class="skill-category"><div class="skill-title">Biotech Core</div><div class="skill-tags"><span class="skill-tag">Biochemistry</span><span class="skill-tag">Molecular Bio</span><span class="skill-tag">Lab Research</span></div></div>
+        <div class="skill-category"><div class="skill-title">CS Fundamentals</div><div class="skill-tags"><span class="skill-tag">DSA</span><span class="skill-tag">Algorithms</span><span class="skill-tag">Problem Solving</span></div></div>
       </div>
-    </div>
-    <div class="skill-group reveal">
-      <div class="skill-group-title">CS Concepts</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Data Structures</span>
-        <span class="skill-tag">Algorithms</span>
-        <span class="skill-tag">Problem Solving</span>
-      </div>
-    </div>
-    <div class="skill-group reveal">
-      <div class="skill-group-title">Web & Design</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Web Development Basics</span>
-        <span class="skill-tag">UI/UX Principles</span>
-      </div>
-    </div>
-    <div class="skill-group reveal">
-      <div class="skill-group-title">Biotech Core</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Biochemistry</span>
-        <span class="skill-tag">Molecular Biology</span>
-        <span class="skill-tag">Scientific Research</span>
-      </div>
-    </div>
-    <div class="skill-group reveal">
-      <div class="skill-group-title">Soft Skills</div>
-      <div class="skill-tags">
-        <span class="skill-tag">English (Intermediate)</span>
-        <span class="skill-tag">Teamwork</span>
-        <span class="skill-tag">Hackathon Participation</span>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="sec-header reveal">
-    <span class="sec-num">03.</span>
-    <h2 class="sec-title">Projects</h2>
-    <div class="sec-line"></div>
-  </div>
-  <div class="proj-grid">
-    <div class="proj-card reveal">
-      <div class="proj-num">// 001</div>
-      <div class="proj-title">Code-A-Haunt 3.0 Hackathon</div>
-      <div class="proj-desc">Participated in a National-Level Inter-University Hackathon at Lovely Professional University. Attended 4 specialized workshops covering Data Science, DSA, Web Development, and UI/UX — showcasing coding and problem-solving skills.</div>
-      <div class="proj-tags">
-        <span class="proj-tag">Hackathon</span>
-        <span class="proj-tag">Data Science</span>
-        <span class="proj-tag">DSA</span>
-        <span class="proj-tag">Web Dev</span>
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-header reveal">
+        <div class="section-sub">// Work & Experience</div>
+        <h2 class="section-title">Highlight Projects</h2>
       </div>
-    </div>
-    <div class="proj-card reveal">
-      <div class="proj-num">// 002</div>
-      <div class="proj-title">Python Programming Projects</div>
-      <div class="proj-desc">Completed Introduction to Python course and building foundational programming projects. Exploring Python's application in biological data analysis and automation tasks.</div>
-      <div class="proj-tags">
-        <span class="proj-tag">Python</span>
-        <span class="proj-tag">Bioinformatics</span>
-        <span class="proj-tag">Automation</span>
+      <div class="projects-grid">
+        <div class="project-card reveal"><div class="project-icon">🧬</div><div class="project-title">Code-A-Haunt 3.0</div><div class="project-desc">National hackathon at LPU: attended workshops on DSA, Data Science, Web Dev & UI/UX. Sharpened collaborative coding skills.</div><div class="project-stack"><span class="skill-tag">Hackathon</span><span class="skill-tag">DSA</span></div></div>
+        <div class="project-card reveal"><div class="project-icon">🐍</div><div class="project-title">Python for Biologists</div><div class="project-desc">Completed "Intro to Python", developing scripts for biological data parsing and automation of lab workflows.</div><div class="project-stack"><span class="skill-tag">Python</span><span class="skill-tag">Bioinformatics</span></div></div>
+        <div class="project-card reveal"><div class="project-icon">📊</div><div class="project-title">GitHub Portfolio</div><div class="project-desc">Active GitHub profile showcasing C/Python projects, aiming to publish reproducible research and code.</div><div class="project-stack"><span class="skill-tag">Git</span><span class="skill-tag">Open Source</span></div></div>
       </div>
-    </div>
-    <div class="proj-card reveal">
-      <div class="proj-num">// 003</div>
-      <div class="proj-title">GitHub Portfolio</div>
-      <div class="proj-desc">Actively maintaining a GitHub profile with coursework, experiments, and mini-projects. Building a consistent digital presence as a student developer and biotech enthusiast.</div>
-      <div class="proj-tags">
-        <span class="proj-tag">Open Source</span>
-        <span class="proj-tag">C</span>
-        <span class="proj-tag">Python</span>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="section-header reveal">
+        <div class="section-sub">// Academic Journey</div>
+        <h2 class="section-title">Education</h2>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- EDUCATION -->
-<section id="education">
-  <div class="sec-header reveal">
-    <span class="sec-num">04.</span>
-    <h2 class="sec-title">Education</h2>
-    <div class="sec-line"></div>
-  </div>
-  <div class="edu-timeline">
-    <div class="edu-item reveal">
-      <div class="edu-degree">B.Tech — Biotechnology</div>
-      <div class="edu-school">Lovely Professional University, Punjab, India</div>
-      <div class="edu-year">2025 — Present</div>
-      <span class="edu-score">1st Year · Ongoing</span>
-    </div>
-    <div class="edu-item reveal">
-      <div class="edu-degree">Class 12th — Science (PCB/PCM)</div>
-      <div class="edu-school">Minerva Sec. Sr. School, Ghumarwin, Himachal Pradesh</div>
-      <div class="edu-year">Passed 2025</div>
-      <span class="edu-score">87%</span>
-    </div>
-    <div class="edu-item reveal">
-      <div class="edu-degree">Class 10th — Secondary Education</div>
-      <div class="edu-school">Minerva Sec. Sr. School, Ghumarwin, Himachal Pradesh</div>
-      <div class="edu-year">Passed 2023</div>
-      <span class="edu-score">94%</span>
-    </div>
-  </div>
-</section>
-
-<!-- CERTIFICATIONS - images linked from 'certificate' folder -->
-<section id="certifications">
-  <div class="sec-header reveal">
-    <span class="sec-num">05.</span>
-    <h2 class="sec-title">Certifications</h2>
-    <div class="sec-line"></div>
-  </div>
-  <div class="cert-grid" id="cert-grid"></div>
-</section>
-
-<!-- LIGHTBOX -->
-<div id="lightbox">
-  <div id="lightbox-close">&#x2715;</div>
-  <img id="lightbox-img" src="" alt="Certificate"/>
-</div>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="sec-header reveal">
-    <span class="sec-num">06.</span>
-    <h2 class="sec-title">Contact</h2>
-    <div class="sec-line"></div>
-  </div>
-  <div class="contact-grid">
-    <div>
-      <p class="contact-intro reveal">I'm open to <strong>internships</strong>, research collaborations, and connecting with fellow students and professionals in biotech and data science. Feel free to reach out!</p>
-      <div class="contact-links">
-        <a href="mailto:naddakrish@gmail.com" class="contact-link reveal">
-          <span class="icon">✉</span>
-          <span>naddakrish@gmail.com</span>
-        </a>
-        <a href="tel:+917018302790" class="contact-link reveal">
-          <span class="icon">📱</span>
-          <span>+91 7018302790</span>
-        </a>
-        <a href="https://github.com/Krish-nadda" target="_blank" class="contact-link reveal">
-          <span class="icon">⌥</span>
-          <span>github.com/Krish-nadda</span>
-        </a>
-        <a href="https://www.linkedin.com/in/krish-nadda-b10101381/" target="_blank" class="contact-link reveal">
-          <span class="icon">in</span>
-          <span>linkedin.com/in/krish-nadda</span>
-        </a>
+      <div class="edu-timeline">
+        <div class="edu-item reveal"><div><div class="edu-degree">B.Tech Biotechnology</div><div class="edu-school">Lovely Professional University, Punjab</div></div><div><span class="edu-score">2025 – Present · 1st Year</span></div></div>
+        <div class="edu-item reveal"><div><div class="edu-degree">Class 12 (Science)</div><div class="edu-school">Minerva Sec. Sr. School, Ghumarwin, HP</div></div><div><span class="edu-score">87% (2025)</span></div></div>
+        <div class="edu-item reveal"><div><div class="edu-degree">Class 10</div><div class="edu-school">Minerva Sec. Sr. School, Ghumarwin, HP</div></div><div><span class="edu-score">94% (2023)</span></div></div>
       </div>
-    </div>
-    <div class="contact-form-note reveal">
-      <h3>// Currently Available For</h3>
-      <p>🔬 Research internships in biotech / bioinformatics<br/>
-         💻 Collaborative coding projects<br/>
-         📊 Data analysis work<br/>
-         🤝 Networking with industry professionals</p>
-    </div>
-  </div>
-</section>
+    </section>
 
-<footer>
-  <span>© 2026 Krish Nadda</span>
-  <span>Built with HTML · CSS · JS</span>
-  <span>LPU, Punjab, India</span>
-</footer>
+    <!-- CERTIFICATIONS (python.png & english.png from certificate folder) -->
+    <section id="certs">
+      <div class="section-header reveal">
+        <div class="section-sub">// Credentials</div>
+        <h2 class="section-title">Certifications</h2>
+      </div>
+      <div class="cert-grid" id="certGrid"></div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-header reveal">
+        <div class="section-sub">// Let's Connect</div>
+        <h2 class="section-title">Get in Touch</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card reveal">
+          <p style="margin-bottom: 1.2rem;">Open to internships, research collabs & biotech-data projects.</p>
+          <a href="mailto:naddakrish@gmail.com" class="contact-link"><i class="fas fa-envelope"></i> naddakrish@gmail.com</a>
+          <a href="tel:+917018302790" class="contact-link"><i class="fas fa-phone-alt"></i> +91 7018302790</a>
+          <a href="https://github.com/Krish-nadda" target="_blank" class="contact-link"><i class="fab fa-github"></i> github.com/Krish-nadda</a>
+          <a href="https://www.linkedin.com/in/krish-nadda-b10101381/" target="_blank" class="contact-link"><i class="fab fa-linkedin"></i> linkedin.com/in/krish-nadda</a>
+        </div>
+        <div class="contact-card reveal">
+          <h3 style="color: var(--accent); margin-bottom: 1rem;"><i class="fas fa-flask"></i> Currently Seeking</h3>
+          <ul style="list-style: none; color: var(--text-secondary); font-size: 0.85rem;">
+            <li>🔬 Biotech / Bioinformatics internships</li>
+            <li>💻 Collaborative open-source projects</li>
+            <li>📊 Data analysis in life sciences</li>
+            <li>🤝 Industry mentorship & networking</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+  <footer>
+    <span>© 2026 Krish Nadda — Biotech Portfolio</span>
+    <span><i class="fas fa-dna"></i> LPU, Punjab, India</span>
+  </footer>
+</main>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
 <script>
-// ── CERTIFICATES DATA with images from 'certificate/' folder ──
-const certs = [
-      { label: `Certificate of Participation — Code-A-Haunt 3.0`, img: `certificate/hack.png` },
-      { label: `Workshop on UI & UX Design`, img: `certificate/uiux.png` },
-      { label: `Workshop on Web Development`, img: `certificate/web.png` },
-      { label: `Workshop on Data Structures & Algorithms`, img: `certificate/dsa.png` },
-      { label: `Workshop on Data Science`, img: `certificate/data.png` }
-];
+  // ========= CERTIFICATIONS with required python.png & english.png =========
+  const certData = [
+    { name: "Code-A-Haunt 3.0 Participation", img: "certificate/hack.png", issuer: "CodingBlocks LPU · 2026" },
+    { name: "UI/UX Design Workshop", img: "certificate/uiux.png", issuer: "Creative Design Wing · LPU" },
+    { name: "Web Development Workshop", img: "certificate/web.png", issuer: "Web Dev Cell · LPU" },
+    { name: "DSA Workshop", img: "certificate/dsa.png", issuer: "DSA Society · LPU" },
+    { name: "Data Science Workshop", img: "certificate/data.png", issuer: "Data Science Hub · LPU" },
+    { name: "Introduction to Python Programming", img: "certificate/python.png", issuer: "Certified Course · Feb 21, 2026" },
+    { name: "Intermediate English as a Second Language", img: "certificate/english.png", issuer: "Saylor Academy · Score 92.59% · Feb 2026" }
+  ];
 
-// Render cert cards
-const grid = document.getElementById('cert-grid');
-certs.forEach((cert, idx) => {
-  const card = document.createElement('div');
-  card.className = 'cert-card reveal';
-  card.innerHTML = `
-    <div class="cert-img-wrap">
-      <img src="${cert.img}" alt="${cert.label}" loading="lazy" onerror="this.src='https://placehold.co/600x340/0d1225/60a5fa?text=Certificate'"/>
-      <div class="cert-overlay"><span>View Certificate</span></div>
-    </div>
-    <div class="cert-body">
-      <div class="cert-label">${cert.label}</div>
-      <div class="cert-issuer">CodingBlocks LPU · Code-A-Haunt 3.0 · 2026</div>
-    </div>
-  `;
-  card.addEventListener('click', () => openLightbox(cert.img));
-  grid.appendChild(card);
-  setTimeout(() => observer.observe(card), 50);
-});
-
-// ── LIGHTBOX ──
-const lb = document.getElementById('lightbox');
-const lbImg = document.getElementById('lightbox-img');
-function openLightbox(src) {
-  lbImg.src = src;
-  lb.classList.add('active');
-}
-document.getElementById('lightbox-close').addEventListener('click', () => lb.classList.remove('active'));
-lb.addEventListener('click', e => { if(e.target === lb) lb.classList.remove('active'); });
-document.addEventListener('keydown', e => { if(e.key === 'Escape') lb.classList.remove('active'); });
-
-// ── SCROLL REVEAL ──
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }});
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// ── ANIMATED CANVAS BG ──
-const canvas = document.getElementById('bg-canvas');
-const ctx = canvas.getContext('2d');
-let W, H, particles = [];
-function resize() {
-  W = canvas.width = window.innerWidth;
-  H = canvas.height = window.innerHeight;
-}
-resize(); window.addEventListener('resize', resize);
-
-class Particle {
-  constructor() { this.reset(); }
-  reset() {
-    this.x = Math.random() * W;
-    this.y = Math.random() * H;
-    this.r = Math.random() * 1.2 + 0.3;
-    this.vx = (Math.random() - 0.5) * 0.25;
-    this.vy = (Math.random() - 0.5) * 0.25;
-    this.a = Math.random() * 0.5 + 0.1;
+  function renderCerts() {
+    const grid = document.getElementById('certGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    certData.forEach(cert => {
+      const card = document.createElement('div');
+      card.className = 'cert-card reveal';
+      card.innerHTML = `
+        <img class="cert-img" src="${cert.img}" alt="${cert.name}" loading="lazy" onerror="this.src='https://placehold.co/400x200/e2e8f0/2b7e3a?text=Certificate'">
+        <div class="cert-info">
+          <div class="cert-name">${cert.name}</div>
+          <div class="cert-issuer">${cert.issuer}</div>
+        </div>
+      `;
+      card.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const lightbox = document.createElement('div');
+        lightbox.style.position = 'fixed';
+        lightbox.style.inset = '0';
+        lightbox.style.background = 'rgba(0,0,0,0.85)';
+        lightbox.style.display = 'flex';
+        lightbox.style.alignItems = 'center';
+        lightbox.style.justifyContent = 'center';
+        lightbox.style.zIndex = '2000';
+        lightbox.style.backdropFilter = 'blur(8px)';
+        const imgView = document.createElement('img');
+        imgView.src = cert.img;
+        imgView.style.maxWidth = '90vw';
+        imgView.style.maxHeight = '85vh';
+        imgView.style.borderRadius = '20px';
+        imgView.style.border = '2px solid var(--accent)';
+        imgView.style.boxShadow = '0 20px 35px rgba(0,0,0,0.3)';
+        lightbox.appendChild(imgView);
+        lightbox.addEventListener('click', () => lightbox.remove());
+        document.body.appendChild(lightbox);
+      });
+      grid.appendChild(card);
+      observer.observe(card);
+    });
   }
-  update() {
-    this.x += this.vx; this.y += this.vy;
-    if (this.x < 0 || this.x > W || this.y < 0 || this.y > H) this.reset();
-  }
-  draw() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(59,130,246,${this.a})`;
-    ctx.fill();
-  }
-}
-for (let i = 0; i < 90; i++) particles.push(new Particle());
 
-function drawLines() {
-  for (let i = 0; i < particles.length; i++) {
-    for (let j = i + 1; j < particles.length; j++) {
-      const dx = particles[i].x - particles[j].x;
-      const dy = particles[i].y - particles[j].y;
-      const d = Math.sqrt(dx*dx + dy*dy);
-      if (d < 110) {
-        ctx.beginPath();
-        ctx.moveTo(particles[i].x, particles[i].y);
-        ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.strokeStyle = `rgba(59,130,246,${0.06 * (1 - d/110)})`;
-        ctx.lineWidth = 0.5;
-        ctx.stroke();
+  // DARK MODE with localStorage
+  const toggleBtn = document.getElementById('darkmode-toggle');
+  function updateThemeUI() {
+    const isDark = document.body.classList.contains('dark');
+    toggleBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i> <span>Light</span>' : '<i class="fas fa-moon"></i> <span>Dark</span>';
+  }
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    updateThemeUI();
+    localStorage.setItem('biotech-theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+  });
+  if (localStorage.getItem('biotech-theme') === 'dark') {
+    document.body.classList.add('dark');
+    updateThemeUI();
+  } else {
+    updateThemeUI();
+  }
+
+  // BACK TO TOP (mobile compatible)
+  const backBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) backBtn.classList.add('show');
+    else backBtn.classList.remove('show');
+  });
+  backBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // SCROLL REVEAL OBSERVER
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
       }
-    }
-  }
-}
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -20px 0px" });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-function animate() {
-  ctx.clearRect(0, 0, W, H);
-  particles.forEach(p => { p.update(); p.draw(); });
-  drawLines();
-  requestAnimationFrame(animate);
-}
-animate();
+  // initialize certificates after DOM
+  renderCerts();
+  // additional observe for dynamically added .reveal cert cards already handled inside renderCerts
 </script>
 </body>
 </html>
